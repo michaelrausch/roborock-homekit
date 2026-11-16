@@ -3,13 +3,32 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
       - run: pip install -e .[dev]
       - run: ruff check .
       - run: ruff format --check .
       - run: pytest -q
       - run: bash -n scripts/install.sh scripts/uninstall.sh
+  pi-wheels:
+    # Fails if any pinned dependency lacks a prebuilt armv6l wheel (Pi Zero W).
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: >
+          pip download -d /tmp/w --only-binary=:all: --platform linux_armv6l
+          --python-version ${{ matrix.python-version }} --implementation cp
+          --index-url https://www.piwheels.org/simple
+          --extra-index-url https://pypi.org/simple -r requirements-pi.txt

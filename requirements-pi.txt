@@ -1,12 +1,16 @@
 # Fully pinned dependency set for Raspberry Pi Zero W
-# (armv6l, Python 3.11, Raspberry Pi OS Bookworm).
+# (armv6l, Raspberry Pi OS Bookworm / Python 3.11 or Trixie / Python 3.13).
 #
 # Every package here has a prebuilt wheel for armv6l on piwheels.org or is pure
 # Python. scripts/install.sh installs with --only-binary=:all:, so pip never
 # tries to compile anything on the Pi (compiling cryptography/orjson needs a
 # Rust toolchain and takes hours on a Zero W, if it works at all).
 #
-# To upgrade: change versions, then check that this resolves on your PC first:
+# Not every release has a wheel for every Python version (e.g. zeroconf is held
+# at 0.151.5, the newest with armv6l wheels for both 3.11 and 3.13).
+#
+# To upgrade: change versions, then check that this resolves on your PC first,
+# once with --python-version 3.11 and once with 3.13:
 #   pip download -d /tmp/w --only-binary=:all: --platform linux_armv6l \
 #     --python-version 3.11 --implementation cp \
 #     --index-url https://www.piwheels.org/simple \
@@ -44,4 +48,4 @@ pyrate-limiter==4.5.1
 vacuum-map-parser-base==0.1.5
 vacuum-map-parser-roborock==0.1.5
 yarl==1.25.1
-zeroconf==0.154.0
+zeroconf==0.151.5

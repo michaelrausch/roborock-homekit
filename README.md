@@ -23,7 +23,8 @@ series (S5/S6/S7/S8, Q5/Q7/Q8 and so on).
 
 ## Requirements
 
-- Raspberry Pi (Zero W or newer) running **Raspberry Pi OS Bookworm** (Python 3.11).
+- Raspberry Pi (Zero W or newer) running **Raspberry Pi OS Bookworm or Trixie**
+  (Python 3.11 or 3.13).
 - The Pi on the same network as your iPhone / Home hub.
 - Your Roborock app account email.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install or upgrade roborock-homekit on a Raspberry Pi (Raspberry Pi OS Bookworm).
+# Install or upgrade roborock-homekit on a Raspberry Pi (Raspberry Pi OS Bookworm or Trixie).
 #
 #   sudo ./scripts/install.sh
 #
