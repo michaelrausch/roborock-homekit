@@ -1,0 +1,48 @@
+# roborock-homekit configuration.
+# Installed location: /etc/roborock-homekit/config.toml
+# After editing, restart:  sudo systemctl restart roborock-homekit
+
+[roborock]
+# The email address you use for the Roborock app. (Required)
+email = "you@example.com"
+
+# Name of the vacuum as shown in the Roborock app. Only needed if your account
+# has more than one vacuum. Run `roborock-homekit devices` to list them.
+# device_name = "Roborock S7"
+
+# Seconds between status polls. The vacuum also pushes changes in between.
+poll_interval_seconds = 30
+
+[homekit]
+# Name of the accessory when first added to Apple Home (you can rename it in the app).
+name = "Roborock"
+
+# TCP port for the HomeKit server.
+port = 51826
+
+# Pairing code, format 123-45-678. If omitted, a random one is generated on first
+# start and kept. View it any time with `roborock-homekit pairing-info`.
+# pincode = "031-45-154"
+
+# Where login credentials and pairing state are stored.
+state_dir = "/var/lib/roborock-homekit"
+
+[features]
+# Occupancy sensor that shows "detected" while the vacuum is in its dock.
+docked_sensor = true
+
+# Switch that makes the vacuum announce "I'm here".
+find_me_switch = true
+
+# Switch that pauses (on) / resumes (off) cleaning.
+pause_switch = false
+
+# What turning the vacuum (fan tile) off does: "dock" or "pause".
+fan_off_action = "dock"
+
+# Battery percentage at or below which Home shows a low-battery warning.
+low_battery_threshold = 20
+
+[logging]
+# DEBUG, INFO, WARNING or ERROR.
+level = "INFO"

@@ -1,0 +1,47 @@
+# Fully pinned dependency set for Raspberry Pi Zero W
+# (armv6l, Python 3.11, Raspberry Pi OS Bookworm).
+#
+# Every package here has a prebuilt wheel for armv6l on piwheels.org or is pure
+# Python. scripts/install.sh installs with --only-binary=:all:, so pip never
+# tries to compile anything on the Pi (compiling cryptography/orjson needs a
+# Rust toolchain and takes hours on a Zero W, if it works at all).
+#
+# To upgrade: change versions, then check that this resolves on your PC first:
+#   pip download -d /tmp/w --only-binary=:all: --platform linux_armv6l \
+#     --python-version 3.11 --implementation cp \
+#     --index-url https://www.piwheels.org/simple \
+#     --extra-index-url https://pypi.org/simple -r requirements-pi.txt
+
+# Direct dependencies
+python-roborock==7.23.2
+HAP-python[QRCode]==5.2.0
+
+# Transitive dependencies
+aiohappyeyeballs==2.7.1
+aiohttp==3.14.5
+aiomqtt==2.5.1
+aiosignal==1.4.0
+attrs==26.1.0
+base36==0.1.1
+cffi==2.1.1
+chacha20poly1305-reuseable==0.13.2
+construct==2.10.70
+cryptography==50.0.2
+frozenlist==1.8.0
+h11==0.16.0
+idna==3.20
+ifaddr==0.2.0
+multidict==7.2.1
+orjson==3.13.0
+paho-mqtt==2.2.0
+pillow==13.0.0
+propcache==0.5.4
+protobuf==6.33.5
+pycparser==3.12
+pycryptodome==3.24.1
+PyQRCode==1.2.1
+pyrate-limiter==4.5.1
+vacuum-map-parser-base==0.1.5
+vacuum-map-parser-roborock==0.1.5
+yarl==1.25.1
+zeroconf==0.154.0
